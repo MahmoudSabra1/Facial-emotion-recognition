@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D, MaxPooling2D, BatchNormalization
+from keras_preprocessing.image import ImageDataGenerator
 from keras.losses import categorical_crossentropy
 from keras.optimizers import Adam, SGD
 from keras.regularizers import l2
@@ -55,45 +56,56 @@ x_train = x_train.reshape(len(x_train), h, w, 1)
 x_test = x_test.reshape(len(x_test), h, w, 1)
 x_val = x_val.reshape(len(x_val), h, w, 1)
 
+# data augmentation
+datagen = ImageDataGenerator(
+    rotation_range=20,
+    horizontal_flip=True)
+datagen.fit(x_train)
 
 model = Sequential()
 
-# 1st convolution layer
+# 1st conv block
 model.add(Conv2D(64, kernel_size=(3, 3), input_shape=(x_train.shape[1:])))
-#model.add(BatchNormalization())
+model.add(BatchNormalization())
 model.add(Activation(activation='relu'))
 model.add(Conv2D(64, kernel_size=(3, 3)))
-#model.add(BatchNormalization())
+model.add(BatchNormalization())
 model.add(Activation(activation='relu'))
-model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
 model.add(Dropout(0.5))
 
-# 2nd convolution layer
+#model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
+
+
+# 2nd conv block
 model.add(Conv2D(64, (3, 3), activation='relu'))
 model.add(Conv2D(64, (3, 3), activation='relu'))
-model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
-# model.add(Dropout(0.5))
 
-# 3rd convolution layer
-model.add(Conv2D(128, (3, 3), activation='relu'))
-model.add(Conv2D(128, (3, 3), activation='relu'))
+# 3rd conv block
+model.add(Conv2D(128, kernel_size=(3, 3)))
 model.add(BatchNormalization())
-model.add(MaxPooling2D(pool_size=(2, 2), strides=(1, 1)))
+model.add(Activation(activation='relu'))
+model.add(Conv2D(128, kernel_size=(3, 3)))
+model.add(BatchNormalization())
+model.add(Activation(activation='relu'))
+
+# 4th conv block
+model.add(Conv2D(128, (3, 3), activation='relu'))
+model.add(Conv2D(128, (3, 3), activation='relu'))
+model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
 
 
-# 4th conv layer
-model.add(Conv2D(256, (2, 2)))
-#model.add(BatchNormalization())
+# 5th conv block
+model.add(Conv2D(256, kernel_size=(3, 3)))
+model.add(BatchNormalization())
 model.add(Activation(activation='relu'))
-model.add(Conv2D(256, (2, 2)))
-#model.add(BatchNormalization())
+model.add(Conv2D(256, kernel_size=(3, 3)))
+model.add(BatchNormalization())
 model.add(Activation(activation='relu'))
-model.add(MaxPooling2D(pool_size=(2, 2), strides=(1, 1)))
 
 model.add(Flatten())
 
-#fully connected neural networks
+# fully connected neural networks
 model.add(Dense(1024, activation='relu'))
 model.add(Dropout(0.2))
 model.add(Dense(1024, activation='relu'))
@@ -102,8 +114,10 @@ model.add(Dropout(0.2))
 model.add(Dense(len(class_names), activation='softmax'))
 
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-history = model.fit(x_train, y_train, epochs=25, batch_size=64, validation_data=(x_val, y_val), verbose=2)
-test_loss, test_acc = model.evaluate(x_test, y_test)
+history = model.fit(datagen.flow(x_train, y_train, batch_size=64), epochs=100
+                    , validation_data=(x_val, y_val), verbose=2)
+
+test_loss, test_acc = model.evaluate(x_test, y_test, verbose=2)
 
 # Plotting accuracy graph
 plt.plot(history.history['accuracy'], label='accuracy')
@@ -123,12 +137,12 @@ plt.legend(loc='upper left')
 
 plt.show()
 
-
 """
 fer_json = model.to_json()
 with open("fer.json", "w") as json_file:
     json_file.write(fer_json)
 model.save_weights("fer.h5")
+
 
 json_file = open('fer.json', 'r')
 loaded_model_json = json_file.read()
