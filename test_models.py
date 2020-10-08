@@ -1,5 +1,4 @@
 # import os
-#
 # os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 from keras.layers import Activation
@@ -77,41 +76,47 @@ print("Y_val shape: " + str(y_val.shape))
 def test_model_y(input_shape=(48, 48, 1), classes=7):
     model = Sequential()
 
-    # 1st convolution layer
+    # 1st stage
     model.add(Conv2D(64, kernel_size=(3, 3), input_shape=input_shape))
-    # model.add(BatchNormalization())
+    model.add(BatchNormalization())
     model.add(Activation(activation='relu'))
     model.add(Conv2D(64, kernel_size=(3, 3)))
-    # model.add(BatchNormalization())
+    model.add(BatchNormalization())
     model.add(Activation(activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
+    # model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
     model.add(Dropout(0.5))
 
-    # 2nd convolution layer
+    # 2nd stage
     model.add(Conv2D(64, (3, 3), activation='relu'))
     model.add(Conv2D(64, (3, 3), activation='relu'))
-    model.add(BatchNormalization())
+    # model.add(BatchNormalization())
     model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
     # model.add(Dropout(0.5))
 
-    # 3rd convolution layer
-    model.add(Conv2D(128, (3, 3), activation='relu'))
-    model.add(Conv2D(128, (3, 3), activation='relu'))
+    # 3rd stage
+    model.add(Conv2D(128, kernel_size=(3, 3)))
     model.add(BatchNormalization())
-    model.add(MaxPooling2D(pool_size=(2, 2), strides=(1, 1)))
+    model.add(Activation(activation='relu'))
+    model.add(Conv2D(128, kernel_size=(3, 3)))
+    model.add(BatchNormalization())
+    model.add(Activation(activation='relu'))
 
-    # 4th conv layer
-    model.add(Conv2D(256, (2, 2)))
-    # model.add(BatchNormalization())
+    # 4th stage
+    model.add(Conv2D(128, (3, 3), activation='relu'))
+    model.add(Conv2D(128, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
+
+    # 5th stage
+    model.add(Conv2D(256, kernel_size=(3, 3)))
+    model.add(BatchNormalization())
     model.add(Activation(activation='relu'))
-    model.add(Conv2D(256, (2, 2)))
-    # model.add(BatchNormalization())
+    model.add(Conv2D(256, kernel_size=(3, 3)))
+    model.add(BatchNormalization())
     model.add(Activation(activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2), strides=(1, 1)))
 
     model.add(Flatten())
 
-    # fully connected neural networks
+    # Fully connected neural networks
     model.add(Dense(1024, activation='relu'))
     model.add(Dropout(0.2))
     model.add(Dense(1024, activation='relu'))
@@ -140,6 +145,7 @@ history = model.fit(datagen.flow(x_train, y_train, batch_size=batch_size), epoch
 # # Loading weights
 # model.load_weights('model46.h5')
 # model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+# print('Model and weights are loaded and compiled.')
 
 test_loss, test_acc = model.evaluate(x_test, y_test, batch_size=batch_size)
 
@@ -168,4 +174,4 @@ with open('Saved-Models\\model' + str(test_acc) + '.json', 'w') as json_file:
     json_file.write(model_json)
 # Serialize and save weights to JSON
 model.save_weights('Saved-Models\\model' + str(test_acc) + '.h5')
-print('Model and weights are saved')
+print('Model and weights are saved in separate files.')
