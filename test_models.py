@@ -1,8 +1,9 @@
 # import os
+#
 # os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 from keras.layers import Activation
-from keras.models import Sequential
+from keras.models import Sequential, model_from_json
 from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout, BatchNormalization
 from keras.preprocessing.image import ImageDataGenerator
 import pandas as pd
@@ -123,12 +124,23 @@ def test_model_y(input_shape=(48, 48, 1), classes=7):
 
 epochs = 100
 batch_size = 64
+
+# Training model from scratch
 model = test_model_y(input_shape=(h, w, 1), classes=len(class_names))
 model.summary()
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 history = model.fit(datagen.flow(x_train, y_train, batch_size=batch_size), epochs=epochs,
                     validation_data=(x_val, y_val), verbose=2)
-# history = model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(x_val, y_val), verbose=2)
+
+# # Loading JSON model
+# json_file = open('model46.json', 'r')
+# loaded_model_json = json_file.read()
+# json_file.close()
+# model = model_from_json(loaded_model_json)
+# # Loading weights
+# model.load_weights('model46.h5')
+# model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
 test_loss, test_acc = model.evaluate(x_test, y_test, batch_size=batch_size)
 
 # Plot accuracy graph
@@ -148,3 +160,12 @@ plt.ylabel('Loss')
 # plt.ylim([0, 3.5])
 plt.legend(loc='upper right')
 plt.show()
+
+# Serialize and save model to JSON
+test_acc = int(test_acc * 10000)
+model_json = model.to_json()
+with open('Saved-Models\\model' + str(test_acc) + '.json', 'w') as json_file:
+    json_file.write(model_json)
+# Serialize and save weights to JSON
+model.save_weights('Saved-Models\\model' + str(test_acc) + '.h5')
+print('Model and weights are saved')
