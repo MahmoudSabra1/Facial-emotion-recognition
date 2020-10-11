@@ -26,11 +26,16 @@ n_samples = len(data)
 w = 48
 h = 48
 
-y = np.array(labels[orig_class_names]).argmax(axis=-1)
+# add 'contempt' probabilities to 'neutral' ones
+arr = np.array(labels[orig_class_names])
+arr[:, 0] += arr[:, 7]
+arr[:, 7] = 0
+y = arr.argmax(axis=-1)
 mask = y < orig_class_names.index('unknown')
 
 y = np.array(labels[orig_class_names]) * 0.1
 y = y[:, :-2]
+
 
 X = np.zeros((n_samples, w, h))
 for i in range(n_samples):
@@ -58,6 +63,8 @@ x_val = x_val.reshape(len(x_val), h, w, 1)
 
 # data augmentation
 datagen = ImageDataGenerator(
+    width_shift_range=0.1,
+    height_shift_range=0.1,
     rotation_range=20,
     horizontal_flip=True)
 datagen.fit(x_train)
@@ -72,9 +79,6 @@ model.add(Conv2D(64, kernel_size=(3, 3)))
 model.add(BatchNormalization())
 model.add(Activation(activation='relu'))
 model.add(Dropout(0.5))
-
-#model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
-
 
 # 2nd conv block
 model.add(Conv2D(64, (3, 3), activation='relu'))
@@ -119,7 +123,7 @@ history = model.fit(datagen.flow(x_train, y_train, batch_size=64), epochs=100
 
 test_loss, test_acc = model.evaluate(x_test, y_test, verbose=2)
 
-# Plotting accuracy graph
+# Plot accuracy graph
 plt.plot(history.history['accuracy'], label='accuracy')
 plt.plot(history.history['val_accuracy'], label='val_accuracy')
 plt.xlabel('Epoch')
@@ -129,6 +133,7 @@ plt.legend(loc='upper left')
 
 plt.show()
 
+# Plot loss graph
 plt.plot(history.history['loss'], label='loss')
 plt.plot(history.history['val_loss'], label='val_loss')
 plt.xlabel('Epoch')
@@ -139,10 +144,9 @@ plt.show()
 
 """
 fer_json = model.to_json()
-with open("fer.json", "w") as json_file:
+with open("Saved-Models/noContempt", "w") as json_file:
     json_file.write(fer_json)
-model.save_weights("fer.h5")
-
+model.save_weights("noContempt.h5")
 
 json_file = open('fer.json', 'r')
 loaded_model_json = json_file.read()
@@ -150,9 +154,4 @@ json_file.close()
 loaded_model = tf.keras.models.model_from_json(loaded_model_json)
 # load weights into new model
 loaded_model.load_weights("fer.h5")
-
-# evaluate loaded model on test data
-loaded_model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-score = loaded_model.evaluate(X_test, test_y, verbose=0)
-print("%s: %.2f%%" % (loaded_model.metrics_names[1], score[1] * 100))
 """
