@@ -16,17 +16,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]('Output/neutral.png')
-
 This is a facial emotion recognition project that utilizes the capabilities of the convolutional neural network(CNN). The architecture of the implemented CNN 
 went through various modifications that are well described in the documentation paper.
 
 ### Built With
-* [Tensorflow]
-* [Keras]
-* [OpenCV]
-
-
+* Tensorflow
+* Keras
+* OpenCV
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -57,7 +53,6 @@ npm install
 ```JS
 const API_KEY = 'ENTER YOUR API';
 ```
-
 
 
 <!-- USAGE EXAMPLES -->
