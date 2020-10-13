@@ -15,7 +15,6 @@
   * [Random Regularization](#random-regularization)
   * [Hyperparameters Tuning](#hyperparameters-tuning)
   * [Multiple Models Ensemble](#multiple-models-ensemble)
-* [Citations](#citations)
 * [Acknowledgements](#acknowledgements)
 
 
@@ -23,8 +22,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a facial emotion recognition project that utilizes the capabilities of the convolutional neural network(CNN). The architecture of the implemented CNN 
+This is a facial emotion recognition project that utilizes the capabilities of the convolutional neural network(CNN). The architecture of the model 
 went through various modifications that are well described in the documentation paper.
+
+A tensorflow implementation of facial emotion recognition model trained on fer2013 dataset.
 
 ### Built With
 * Keras
@@ -79,7 +80,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- Improving Model Performance -->
 ## Improving Model Performance
 ### Baseline Model
-Todo
+Used [neha01 model](https://github.com/neha01/Realtime-Emotion-Detection) as baseline model which achieved 66% test accuracy on fer2013 dataset.
 
 ### Data Augmentation
 Todo
@@ -94,24 +95,5 @@ Todo
 Todo
 
 
-
-<!-- Citations -->
-## Citations
-[FerPlus Data Repo by Microsoft](https://github.com/microsoft/FERPlus)
-
-
-
-
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
