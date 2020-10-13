@@ -13,7 +13,6 @@
   * [Baseline Model](#baseline-model)
   * [Data Augmentation](#data-augmentation)
   * [Random Regularization](#random-regularization)
-  * [Hyperparameters Tuning](#hyperparameters-tuning)
   * [Multiple Models Ensemble](#multiple-models-ensemble)
 * [Acknowledgements](#acknowledgements)
 
@@ -79,17 +78,17 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 ### Baseline Model
 Used [neha01 model](https://github.com/neha01/Realtime-Emotion-Detection) as baseline model which achieved 66% test accuracy on fer2013 dataset.
 
-### Data Augmentation
-Todo
+### Cleaning Data
+Because of alot of mislabeled images in fer2013 dataset, we found that ferPlus labels is a better option to train the model that led to improved test accuracy.
 
-### Random Regularization
-Todo
+### Regularization
+#### 1. Data Augmentation
+Implemented it with keras [ImageDataGenerator](https://keras.io/api/preprocessing/image/#imagedatagenerator-class) class and tuned its parameters so the test accuracy increased by --%.
 
-### Hyperparameters Tuning
-Todo
-
-### Multiple Models Ensemble
-Todo
+#### 2. Batch Normalization and Dropout Layers
+Batch normalization applies a transformation that maintains the mean output close to 0 and the output standard deviation close to 1 which makes training faster and more stable.
+Dropout layers randomly chooses percentage of input neurons to drop while training such that it has a regularization effect.
+Both layers are added to our model increasing performance by --%
 
 
 <!-- ACKNOWLEDGEMENTS -->
