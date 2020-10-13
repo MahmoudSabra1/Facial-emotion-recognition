@@ -1,22 +1,5 @@
 # Facial-Emotion-Recognition
 
-<!-- TABLE OF CONTENTS -->
-## Table of Contents
-
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Improving Model Performance](#improving-model-performance)
-  * [Baseline Model](#baseline-model)
-  * [Data Augmentation](#data-augmentation)
-  * [Random Regularization](#random-regularization)
-  * [Multiple Models Ensemble](#multiple-models-ensemble)
-* [Acknowledgements](#acknowledgements)
-
-
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
