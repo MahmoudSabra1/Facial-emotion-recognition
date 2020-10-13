@@ -76,3 +76,5 @@ Both layers are added to our model increasing performance by --%
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
+- https://machinelearningmastery.com/image-augmentation-deep-learning-keras/
+- https://www.pyimagesearch.com/2017/02/06/faster-video-file-fps-with-cv2-videocapture-and-opencv/
