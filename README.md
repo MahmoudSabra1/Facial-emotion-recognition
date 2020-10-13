@@ -1,4 +1,4 @@
-# Facial-emotion-recognition
+# Facial-Emotion-Recognition
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -9,6 +9,13 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
+* [Improving Model Performance](#improving-model-performance)
+  * [Baseline Model](#baseline-model)
+  * [Data Augmentation](#data-augmentation)
+  * [Random Regularization](#random-regularization)
+  * [Hyperparameters Tuning](#hyperparameters-tuning)
+  * [Multiple Models Ensemble](#multiple-models-ensemble)
+* [Citations](#citations)
 * [Acknowledgements](#acknowledgements)
 
 
@@ -20,42 +27,45 @@ This is a facial emotion recognition project that utilizes the capabilities of t
 went through various modifications that are well described in the documentation paper.
 
 ### Built With
-* Tensorflow
 * Keras
+* Tensorflow
 * OpenCV
-
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
+* python >= 3.7.9
+* keras >= 2.4.3
+* tensorflow >= 2.3.1
+* opencv >= 4.4
+* sklearn >= 0.23
+* numpy >= 1.18.5
+* pandas >= 1.1.2
+* matplotlib >= 3.3.1
 
 ### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
 ```sh
-git clone https:://github.com/your_username_/Project-Name.git
+git clone https://github.com/MahmoudSabra1/Facial-emotion-recognition
 ```
-3. Install NPM packages
-```sh
-npm install
-```
-4. Enter your API in `config.js`
-```JS
-const API_KEY = 'ENTER YOUR API';
-```
-
+2. Install required packages
+  * Use [anaconda](https://www.anaconda.com/) to easily install keras and tensorflow in addition to necessary cuda drivers to run the model on GPU.
+  ```sh
+  conda install tensorflow
+  conda install keras
+  ```
+  * Other packages can be easily installed using either pip or conda.
+  ```sh
+  pip install opencv
+  conda install numpy
+  ```
+3. Todo: after refactoring of code.
+  -open live video capture
+  -load video to model
+  -train model on new data with other shapes
+  -predict on external img
 
 
 <!-- USAGE EXAMPLES -->
@@ -64,6 +74,31 @@ const API_KEY = 'ENTER YOUR API';
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
+
+
+<!-- Improving Model Performance -->
+## Improving Model Performance
+### Baseline Model
+Todo
+
+### Data Augmentation
+Todo
+
+### Random Regularization
+Todo
+
+### Hyperparameters Tuning
+Todo
+
+### Multiple Models Ensemble
+Todo
+
+
+
+<!-- Citations -->
+## Citations
+[FerPlus Data Repo by Microsoft](https://github.com/microsoft/FERPlus)
+
 
 
 
