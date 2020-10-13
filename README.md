@@ -22,9 +22,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a facial emotion recognition project that utilizes the capabilities of the convolutional neural network(CNN). The architecture of the model 
-went through various modifications that are well described in the documentation paper.
-
 A tensorflow implementation of facial emotion recognition model trained on fer2013 dataset.
 
 ### Built With
