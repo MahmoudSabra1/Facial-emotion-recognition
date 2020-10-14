@@ -55,6 +55,7 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 <!-- Improving Model Performance -->
 ## Improving Model Performance
+
 ### Baseline Model
 Used [neha01 model](https://github.com/neha01/Realtime-Emotion-Detection) as baseline model which is based on a 3 block convolutional neural network architecture. It achieved 66% test accuracy on fer2013 dataset.
 
@@ -74,12 +75,12 @@ Both layers are added to our model increasing performance by --%
 ## Performance Analysis
 Plotting the accuracy and loss of the trained model is always the first step to anaylze how the the model is performing. Here are two pictures illustrating the difference in performance between one of the initial architectures used and the final architecture.
 --->insert 2 pictures
-However, depending on only the accuracy and loss of the trained model doesn't always give a full understanding of the model's performance. There are more advanced metrics that can be used like the F1 score which we used. The F1 score is calculated using two pre-calculated metrics: precision and recall which are best visualised using the confusion matrix. You can checkout (https://medium.com/analytics-vidhya/confusion-matrix-accuracy-precision-recall-f1-score-ade299cf63cd) for a full and clear explanation. Here's how our confusion matrix for all 8 classes looked like.
-![confusion_matrix](https://user-images.githubusercontent.com/43937873/96006812-26ffed80-0e3e-11eb-83c3-4cd5f1f7dee0.png)
+However, depending on only the accuracy and loss of the trained model doesn't always give a full understanding of the model's performance. There are more advanced metrics that can be used like the F1 score which we used. The F1 score is calculated using two pre-calculated metrics: precision and recall which are best visualised using the confusion matrix. You can checkout (https://medium.com/analytics-vidhya/confusion-matrix-accuracy-precision-recall-f1-score-ade299cf63cd) for a full and clear explanation. Since we designed our model to recognise the 7 universal facial emotions and the ferplus dataset had an 8th class for 'contempt' emotions, we decided to add all contempt class' examples to the 'neutral' class rather than throwing this data away. Here's how our confusion matrix for the 7 classes looks like. F1 score = 0.8
+![confusion_matrix](https://user-images.githubusercontent.com/43937873/96011743-9a582e00-0e43-11eb-9b95-eba91f99aa6f.png)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 - https://machinelearningmastery.com/image-augmentation-deep-learning-keras/
 - https://machinelearningmastery.com/improve-deep-learning-performance/
 - https://www.pyimagesearch.com/2017/02/06/faster-video-file-fps-with-cv2-videocapture-and-opencv/
-- 
+- https://medium.com/analytics-vidhya/deep-learning/home
