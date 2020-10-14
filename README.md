@@ -41,12 +41,6 @@ git clone https://github.com/MahmoudSabra1/Facial-emotion-recognition
   pip install opencv
   conda install numpy
   ```
-3. Todo: after refactoring of code.
-  -open live video capture
-  -load video to model
-  -train model on new data with other shapes
-  -predict on external img
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -80,9 +74,16 @@ Plotting the accuracy and loss of the trained model is always the first step to 
   <img src=https://user-images.githubusercontent.com/43937873/96019764-48b4a100-0e4d-11eb-8509-50740b90e9d0.png alt="drawing" width="400"/> 
 </p>
 
-The plot on the left is for our initial architecture, we can see that the model started to overfit in the early epochs which meant that either that model wasn't the best fit for the dataset or that the dataset itself wasn't sufficient for the model to learn enough features to be able to predict with high accuracy. On the other hand, the plot on the right shows that the cross-validation accuracy was keeping up with the training accuracy up to the 80s which is a good sign and it's certainly an improved performance from the one on the left. Our final architecture had a test accuracy of 84%.
+The plot on the left is for our initial architecture, we can see that the model started to overfit in the early epochs which meant that either that model wasn't the best fit for the dataset or that the dataset itself wasn't sufficient for the model to learn enough features to be able to predict with high accuracy. On the other hand, the plot on the right shows that the cross-validation accuracy was keeping up with the training accuracy up to the 80s which is a good sign and it's certainly an improved performance from the one on the left. Our final architecture had a test accuracy of 84%. The architecture is a combination of these 3 blocks:
+
+<p float="left">
+  <img src=https://user-images.githubusercontent.com/43937873/96025489-7aca0100-0e55-11eb-8b08-ed17fcf30ba7.png alt="drawing" width="310"/>
+  <img src=https://user-images.githubusercontent.com/43937873/96025536-8caba400-0e55-11eb-8f27-29e9182459ac.png alt="drawing" width="310"/> 
+  <img src=https://user-images.githubusercontent.com/43937873/96025592-9df4b080-0e55-11eb-917f-19b17820c4e0.png alt="drawing" width="310"/>
+</p>
  
-However, depending on only the accuracy and loss of the trained model doesn't always give a full understanding of the model's performance. There are more advanced metrics that can be used like the F1 score which we decided to use. The F1 score is calculated using two pre-calculated metrics: precision and recall. These two metrics utilize the true positive, false positive and false negative predicted examples which are best visualised using the confusion matrix. You can checkout (https://medium.com/analytics-vidhya/confusion-matrix-accuracy-precision-recall-f1-score-ade299cf63cd) for a full and clear explanation. Since we designed our model to recognise the 7 universal facial emotions and the ferplus dataset had an 8th class for 'contempt' emotions, we decided to add all contempt class' examples to the 'neutral' class rather than throwing this data away. Here's how our confusion matrix for the 7 classes looks like. F1 score = 0.8
+However, depending on only the accuracy and loss of the trained model doesn't always give a full understanding of the model's performance. There are more advanced metrics that can be used like the F1 score which we decided to use. The F1 score is calculated using two pre-calculated metrics: precision and recall. These two metrics utilize the true positive, false positive and false negative predicted examples which are best visualised using the confusion matrix. You can checkout (https://medium.com/analytics-vidhya/confusion-matrix-accuracy-precision-recall-f1-score-ade299cf63cd) for a full and clear explanation. Since we designed our model to recognise the 7 universal facial emotions and the ferplus dataset had an 8th class for 'contempt' emotions, we decided to add all contempt class' examples to the 'neutral' class rather than throwing this data away. Here's how our confusion matrix for the 7 classes looks like. F1 score = 0.8.
+
 <img src=https://user-images.githubusercontent.com/43937873/96011743-9a582e00-0e43-11eb-9b95-eba91f99aa6f.png alt="drawing" width="700"/>
 
 <!-- ACKNOWLEDGEMENTS -->
