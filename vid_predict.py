@@ -28,7 +28,7 @@ while fvs.more():
 
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    faces_detected = face_haar_cascade.detectMultiScale(gray_img, 1.1, 6, minSize=(200, 200))
+    faces_detected = face_haar_cascade.detectMultiScale(gray_img, 1.1, 6, minSize=(150, 150))
 
     for (x, y, w, h) in faces_detected:
         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), thickness=2)
@@ -46,8 +46,8 @@ while fvs.more():
 
         cv2.putText(img, predicted_emotion, (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (255, 255, 255), 2)
 
-        resized_img = cv2.resize(img, (1000, 700))
-        cv2.imshow('Facial Emotion Recognition', resized_img)
+    resized_img = cv2.resize(img, (1000, 700))
+    cv2.imshow('Facial Emotion Recognition', resized_img)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

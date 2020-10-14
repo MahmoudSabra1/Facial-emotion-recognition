@@ -22,7 +22,7 @@ while True:
         break
 
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    faces_detected = face_haar_cascade.detectMultiScale(gray_img, 1.1, 6)
+    faces_detected = face_haar_cascade.detectMultiScale(gray_img, 1.1, 6, minSize=(150, 150))
 
     for (x, y, w, h) in faces_detected:
         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), thickness=2)
