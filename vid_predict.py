@@ -1,7 +1,6 @@
 import argparse
 import cv2
 import numpy as np
-from imutils.video import FileVideoStream
 from keras.models import model_from_json
 from keras.preprocessing import image
 
@@ -11,24 +10,26 @@ ap.add_argument('-v', '--video', required=True, help='path to input video file')
 args = vars(ap.parse_args())
 
 # Loading JSON model
-json_file = open('Saved-Models\\model8402.json', 'r')
+json_file = open('Saved-Models\\noContempt.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 model = model_from_json(loaded_model_json)
 
 # Loading weights
-model.load_weights('Saved-Models\\model8402.h5')
+model.load_weights('Saved-Models\\noContempt.h5')
 
 face_haar_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
-fvs = FileVideoStream(args['video']).start()
+cap = cv2.VideoCapture(args['video'])
 
-while fvs.more():
-    img = fvs.read()
+while True:
+    ret, img = cap.read()
+    if not ret:
+        continue
 
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    faces_detected = face_haar_cascade.detectMultiScale(gray_img, 1.1, 6, minSize=(150, 150))
+    faces_detected = face_haar_cascade.detectMultiScale(gray_img, 1.32, 5)
 
     for (x, y, w, h) in faces_detected:
         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), thickness=2)
@@ -39,9 +40,9 @@ while fvs.more():
         img_pixels /= 255.0
 
         predictions = model.predict(img_pixels)
-        max_index = int(np.argmax(predictions))
+        max_index = int(np.argmax(predictions[0]))
 
-        emotions = ['neutral', 'happiness', 'surprise', 'sadness', 'anger', 'disgust', 'fear']
+        emotions = ['neutral', 'happiness', 'surprise', 'sadness', 'anger', 'disgust', 'fear', 'contempt']
         predicted_emotion = emotions[max_index]
 
         cv2.putText(img, predicted_emotion, (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (255, 255, 255), 2)
@@ -52,5 +53,5 @@ while fvs.more():
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-fvs.stop()
+cap.release()
 cv2.destroyAllWindows()
