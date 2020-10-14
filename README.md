@@ -45,7 +45,24 @@ git clone https://github.com/MahmoudSabra1/Facial-emotion-recognition
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+The model can make predictions on saved images by providing the image path using the following command
+ ```sh
+  python img_predict.py -i "image path"
+ ```
+It can also predict on saved videos
+```sh
+  python vid_predict.py -v "video path"
+```
+Or by using a live camera
+```sh
+  python live_cam_predict.py
+```
+Here are some test examples:
+<p float="left">
+  <img src= alt="drawing" width="310"/>
+  <img src= alt="drawing" width="310"/> 
+  <img src= alt="drawing" width="310"/>
+</p>
 
 <!-- Improving Model Performance -->
 ## Improving Model Performance
@@ -63,7 +80,7 @@ Data augmentation is used to artifically create images, these images are added t
 #### 2. Batch Normalization and Dropout Layers
 Batch normalization applies a transformation that maintains the mean output close to 0 and the output standard deviation close to 1 which makes training faster and more stable.
 Dropout layers randomly chooses percentage of input neurons to drop while training such that it has a regularization effect.
-Both layers are added to our model increasing performance by --%
+Both layers are added to our model improving performance by 5%
 
 <!-- Performance Analysis -->
 ## Performance Analysis
@@ -82,7 +99,7 @@ The plot on the left is for our initial architecture, we can see that the model 
   <img src=https://user-images.githubusercontent.com/43937873/96025592-9df4b080-0e55-11eb-917f-19b17820c4e0.png alt="drawing" width="310"/>
 </p>
  
-However, depending on only the accuracy and loss of the trained model doesn't always give a full understanding of the model's performance. There are more advanced metrics that can be used like the F1 score which we decided to use. The F1 score is calculated using two pre-calculated metrics: precision and recall. These two metrics utilize the true positive, false positive and false negative predicted examples which are best visualised using the confusion matrix. You can checkout (https://medium.com/analytics-vidhya/confusion-matrix-accuracy-precision-recall-f1-score-ade299cf63cd) for a full and clear explanation. Since we designed our model to recognise the 7 universal facial emotions and the ferplus dataset had an 8th class for 'contempt' emotions, we decided to add all contempt class' examples to the 'neutral' class rather than throwing this data away. Here's how our confusion matrix for the 7 classes looks like. F1 score = 0.8.
+However, depending on only the accuracy and loss of the trained model doesn't always give a full understanding of the model's performance. There are more advanced metrics that can be used like the F1 score which we decided to use. The F1 score is calculated using two pre-calculated metrics: precision and recall. These two metrics utilize the true positive, false positive and false negative predicted examples which are best visualised using the confusion matrix. You can checkout (https://medium.com/analytics-vidhya/confusion-matrix-accuracy-precision-recall-f1-score-ade299cf63cd) for a full and clear explanation. Since we designed our model to recognise the 7 universal facial emotions and the ferplus dataset had an 8th class for 'contempt' emotions, we decided to add all contempt class' examples to the 'neutral' class rather than throwing this data away. Here's how our confusion matrix for the 7 classes looks like, the X-axis is for predicted labels and the Y-axis is for the true ones. F1 score = 0.8.
 
 <img src=https://user-images.githubusercontent.com/43937873/96011743-9a582e00-0e43-11eb-9b95-eba91f99aa6f.png alt="drawing" width="700"/>
 
