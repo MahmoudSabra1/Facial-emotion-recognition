@@ -73,8 +73,9 @@ Both layers are added to our model increasing performance by --%
 <!-- Performance Analysis -->
 ## Performance Analysis
 Plotting the accuracy and loss of the trained model is always the first step to anaylze how the the model is performing. Here are two pictures illustrating the difference in performance between one of the initial architectures used and the final architecture.
-
-Depending on only the accuracy and loss of the trained model doesn't always give a full understanding of the model's performance.
+--->insert 2 pictures
+However, depending on only the accuracy and loss of the trained model doesn't always give a full understanding of the model's performance. There are more advanced metrics that can be used like the F1 score which we used. The F1 score is calculated using two pre-calculated metrics: precision and recall which are best visualised using the confusion matrix. You can checkout (https://medium.com/analytics-vidhya/confusion-matrix-accuracy-precision-recall-f1-score-ade299cf63cd) for a full and clear explanation. Here's how our confusion matrix for all 8 classes looked like.
+![confusion_matrix](https://user-images.githubusercontent.com/43937873/96006812-26ffed80-0e3e-11eb-83c3-4cd5f1f7dee0.png)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
