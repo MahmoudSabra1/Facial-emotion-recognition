@@ -43,8 +43,8 @@ while True:
         resized_img = cv2.resize(img, (1000, 700))
         cv2.imshow('Facial Emotion Recognition', resized_img)
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
 cap.release()
 cv2.destroyAllWindows()
