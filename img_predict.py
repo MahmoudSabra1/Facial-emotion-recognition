@@ -6,23 +6,23 @@ from keras.preprocessing import image
 
 # Parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument('-i', '--image', required=True, help='path to input image file')
+ap.add_argument('image', help='path to input image file')
 args = vars(ap.parse_args())
 
 # Load model from JSON file
-json_file = open('Saved-Models\\model8402.json', 'r')
+json_file = open('top_models\\fer.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 model = model_from_json(loaded_model_json)
 
 # Load weights and them to model
-model.load_weights('Saved-Models\\model8402.h5')
+model.load_weights('top_models\\fer.h5')
 
 classifier = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 img = cv2.imread(args['image'])
 gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-faces_detected = classifier.detectMultiScale(gray_img, 1.1, 5)
+faces_detected = classifier.detectMultiScale(gray_img, 1.18, 5)
 
 for (x, y, w, h) in faces_detected:
     cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
@@ -40,7 +40,7 @@ for (x, y, w, h) in faces_detected:
 
     cv2.putText(img, predicted_emotion, (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (255, 255, 255), 2)
 
-resized_img = cv2.resize(img, (1000, 700))
+resized_img = cv2.resize(img, (1024, 768))
 cv2.imshow('Facial Emotion Recognition', resized_img)
 
 if cv2.waitKey(0) & 0xFF == ord('q'):

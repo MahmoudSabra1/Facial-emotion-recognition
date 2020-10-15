@@ -4,13 +4,13 @@ from keras.models import model_from_json
 from keras.preprocessing import image
 
 # Load model from JSON file
-json_file = open('Saved-Models\\model8402.json', 'r')
+json_file = open('top_models\\fer.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 model = model_from_json(loaded_model_json)
 
 # Load weights and them to model
-model.load_weights('Saved-Models\\model8402.h5')
+model.load_weights('top_models\\fer.h5')
 
 face_haar_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
