@@ -58,7 +58,7 @@ Or by using a live camera
   python live_cam_predict.py
 ```
 Here are some test examples:
-<p float="left">
+<p align="left">
   <img src= alt="drawing" width="310"/>
   <img src= alt="drawing" width="310"/> 
   <img src= alt="drawing" width="310"/>
@@ -92,22 +92,31 @@ Both layers are added to our model improving performance by ~5%
 ## Performance Analysis
 Plotting the accuracy and loss of the trained model is always the first step to anaylze how the the model is performing. Here are two pictures illustrating the difference in performance between one of the initial architectures and the final architecture.
 
-<p float="left">
-  <img src=https://user-images.githubusercontent.com/43937873/96019814-5d913480-0e4d-11eb-8679-b278ab47840d.png alt="drawing" width="400"/>
-  <img src=https://user-images.githubusercontent.com/40613682/96056745-aebe1a00-0e87-11eb-9198-ceb4e274b50b.png alt="drawing" width="400"/> 
+<p align="center">
+  <img src=https://user-images.githubusercontent.com/43937873/96019814-5d913480-0e4d-11eb-8679-b278ab47840d.png alt="drawing" width="400" height="330"/>
+  <img src=https://user-images.githubusercontent.com/40613682/96056745-aebe1a00-0e87-11eb-9198-ceb4e274b50b.png alt="drawing" width="450" height="330"/> 
 </p>
 
-The plot on the left is for our initial architecture, we can see that the model started to overfit in the early epochs which meant that either that model wasn't the best fit for the dataset or that the dataset itself wasn't sufficient for the model to learn enough features to be able to predict with high accuracy. On the other hand, the plot on the right shows that the cross-validation accuracy was keeping up with the training accuracy up to the 80s which is a good sign and it's certainly an improved performance from the one on the left. Our final architecture had a test accuracy of 84%. The architecture is a combination of these 3 blocks:
+The plot on the left is for our initial architecture, we can see that the model started to overfit in the early epochs which meant that either that model wasn't the best fit for the dataset or that the dataset itself wasn't sufficient for the model to learn enough features to be able to predict with high accuracy.  
+On the other hand, the plot on the right shows that the cross-validation accuracy was keeping up with the training accuracy up to the 80s which is a good sign and it's certainly an improved performance from the one on the left.  
+Our final architecture had a test accuracy of ~84%. The architecture is a combination of these 3 blocks:
 
-<p float="left">
+<p align="center">
   <img src=https://user-images.githubusercontent.com/43937873/96025489-7aca0100-0e55-11eb-8b08-ed17fcf30ba7.png alt="drawing" width="310"/>
-  <img src=https://user-images.githubusercontent.com/43937873/96025536-8caba400-0e55-11eb-8f27-29e9182459ac.png alt="drawing" width="310"/> 
+  <img src=https://user-images.githubusercontent.com/43937873/96025536-8caba400-0e55-11eb-8f27-29e9182459ac.png alt="drawing" width="310"/>
   <img src=https://user-images.githubusercontent.com/43937873/96025592-9df4b080-0e55-11eb-917f-19b17820c4e0.png alt="drawing" width="310"/>
 </p>
- 
-However, depending on only the accuracy and loss of the trained model doesn't always give a full understanding of the model's performance. There are more advanced metrics that can be used like the F1 score which we decided to use. The F1 score is calculated using two pre-calculated metrics: precision and recall. These two metrics utilize the true positive, false positive and false negative predicted examples which are best visualised using the confusion matrix. You can checkout (https://medium.com/analytics-vidhya/confusion-matrix-accuracy-precision-recall-f1-score-ade299cf63cd) for a full and clear explanation. Since we designed our model to recognise the 7 universal facial emotions and the FERPlus dataset had an 8th class for 'contempt' emotions, we decided to add all contempt class' examples to the 'neutral' class rather than throwing this data away. Here's how our confusion matrix for the 7 classes looks like, the X-axis is for predicted labels and the Y-axis is for the true ones. F1 score = 0.8.
 
-<img src=https://user-images.githubusercontent.com/43937873/96011743-9a582e00-0e43-11eb-9b95-eba91f99aa6f.png alt="drawing" width="700"/>
+However, depending on only the accuracy and loss of the trained model doesn't always give a full understanding of the model's performance.  
+There are more advanced metrics that can be used like the F1 score which we decided to use. The F1 score is calculated using two pre-calculated metrics: precision and recall. These two metrics utilize the true positive, false positive and false negative predicted examples which are best visualised using the confusion matrix.  
+You can checkout (https://medium.com/analytics-vidhya/confusion-matrix-accuracy-precision-recall-f1-score-ade299cf63cd) for a full and clear explanation.  
+Since we designed our model to recognise the 7 universal facial emotions and the FERPlus dataset had an 8th class for 'contempt' emotions, we decided to add all contempt class' examples to the 'neutral' class rather than throwing this data away.  
+Here's how our confusion matrix for the 7 classes looks like, the X-axis is for predicted labels and the Y-axis is for the true ones.  
+**F1 score = 0.8.**
+
+<p align="center">
+<img align="center" src=https://user-images.githubusercontent.com/43937873/96011743-9a582e00-0e43-11eb-9b95-eba91f99aa6f.png alt="drawing"/>
+</p>
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
