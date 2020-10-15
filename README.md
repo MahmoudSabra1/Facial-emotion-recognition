@@ -47,11 +47,11 @@ git clone https://github.com/MahmoudSabra1/Facial-emotion-recognition
 
 The model can make predictions on saved images by providing the image path using the following command
  ```sh
-  python img_predict.py -i "image path"
+  python img_predict.py <image path>
  ```
 It can also predict on saved videos
 ```sh
-  python vid_predict.py -v "video path"
+  python vid_predict.py <video path>
 ```
 Or by using a live camera
 ```sh
