@@ -100,8 +100,8 @@ Both layers are added to our model improving performance by ~5%
 Plotting the accuracy and loss of the trained model is always the first step to anaylze how the the model is performing. Here are two pictures illustrating the difference in performance between one of the initial architectures and the final architecture.
 
 <p align="center">
-  <img src=https://user-images.githubusercontent.com/43937873/96019814-5d913480-0e4d-11eb-8679-b278ab47840d.png alt="drawing" width="400" height="330"/>
-  <img src=https://user-images.githubusercontent.com/40613682/96056745-aebe1a00-0e87-11eb-9198-ceb4e274b50b.png alt="drawing" width="450" height="330"/> 
+  <img src=https://user-images.githubusercontent.com/43937873/96019814-5d913480-0e4d-11eb-8679-b278ab47840d.png alt="drawing" width="350" height="330"/>
+  <img src=https://user-images.githubusercontent.com/40613682/96056745-aebe1a00-0e87-11eb-9198-ceb4e274b50b.png alt="drawing" width="400" height="330"/> 
 </p>
 
 The plot on the left is for our initial architecture, we can see that the model started to overfit in the early epochs which meant that either that model wasn't the best fit for the dataset or that the dataset itself wasn't sufficient for the model to learn enough features to be able to predict with high accuracy.  
@@ -109,9 +109,9 @@ On the other hand, the plot on the right shows that the cross-validation accurac
 Our final architecture had a test accuracy of ~84%. The architecture is a combination of these 3 blocks:
 
 <p align="center">
-  <img src=https://user-images.githubusercontent.com/43937873/96025489-7aca0100-0e55-11eb-8b08-ed17fcf30ba7.png alt="drawing" width="310"/>
-  <img src=https://user-images.githubusercontent.com/43937873/96025536-8caba400-0e55-11eb-8f27-29e9182459ac.png alt="drawing" width="310"/>
-  <img src=https://user-images.githubusercontent.com/43937873/96025592-9df4b080-0e55-11eb-917f-19b17820c4e0.png alt="drawing" width="310"/>
+  <img src=https://user-images.githubusercontent.com/43937873/96025489-7aca0100-0e55-11eb-8b08-ed17fcf30ba7.png alt="drawing" width="280"/>
+  <img src=https://user-images.githubusercontent.com/43937873/96025536-8caba400-0e55-11eb-8f27-29e9182459ac.png alt="drawing" width="280"/>
+  <img src=https://user-images.githubusercontent.com/43937873/96025592-9df4b080-0e55-11eb-917f-19b17820c4e0.png alt="drawing" width="280"/>
 </p>
 
 However, depending on only the accuracy and loss of the trained model doesn't always give a full understanding of the model's performance.  
