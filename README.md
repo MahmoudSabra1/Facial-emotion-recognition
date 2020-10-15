@@ -59,11 +59,11 @@ Or by using a live camera
 ```
 Here are some test examples:
 <p align="center">
-  <img src=https://user-images.githubusercontent.com/40613682/96073810-7c241980-0ea7-11eb-848d-29b56ecf4fc1.png alt="drawing" width="150"/>
-  <img src=https://user-images.githubusercontent.com/40613682/96074052-fc4a7f00-0ea7-11eb-8fca-4baf225ed327.png alt="drawing" width="150"/> 
-  <img src=https://user-images.githubusercontent.com/40613682/96074205-67945100-0ea8-11eb-9e43-5b9124c94275.png alt="drawing" width="150"/>
-  <img src=https://user-images.githubusercontent.com/40613682/96074354-ca85e800-0ea8-11eb-86da-749d3653ddbf.png alt="drawing" width="150"/>
-  <img src=https://user-images.githubusercontent.com/40613682/96076039-b9d77100-0eac-11eb-93e0-26ca0f6e678d.png alt="drawing" width="150"/>
+  <img src=https://user-images.githubusercontent.com/40613682/96073810-7c241980-0ea7-11eb-848d-29b56ecf4fc1.png alt="drawing" width="180" height="180"/>
+  <img src=https://user-images.githubusercontent.com/40613682/96074052-fc4a7f00-0ea7-11eb-8fca-4baf225ed327.png alt="drawing" width="180" height="180"/> 
+  <img src=https://user-images.githubusercontent.com/40613682/96074205-67945100-0ea8-11eb-9e43-5b9124c94275.png alt="drawing" width="180" height="180"/>
+  <img src=https://user-images.githubusercontent.com/40613682/96074354-ca85e800-0ea8-11eb-86da-749d3653ddbf.png alt="drawing" width="180" height="180"/>
+  <img src=https://user-images.githubusercontent.com/40613682/96076039-b9d77100-0eac-11eb-93e0-26ca0f6e678d.png alt="drawing" width="180" height="180"/>
 </p>
 
 <!-- Improving Model Performance -->
@@ -73,16 +73,17 @@ Here are some test examples:
 Used [neha01 model](https://github.com/neha01/Realtime-Emotion-Detection) as baseline model which is based on a 3 block convolutional neural network architecture. It achieved ~57.5% test accuracy on FER2013 dataset.
 
 ### Data Cleaning
-Because of alot of mislabeled images in FER2013 dataset, we found that using FERPlus' labels is a better option to train the model for better performance.
+Because of alot of mislabeled images in FER2013 dataset, we found that using FERPlus' labels is a better option to train the model for better performance.  
 Here are some examples of the FER vs FER+ labels extracted from the mentioned paper in [FER+ repo](https://github.com/microsoft/FERPlus) (FER top, FER+ bottom):
 <p align="center">
   <img width="600" src="https://raw.githubusercontent.com/Microsoft/FERPlus/master/FER+vsFER.png">
 </p>
+We also added 2 more blocks to the baseline model without regularization thus overall accuracy increased by ~14.
 
 ### Regularization
 #### 1. Data Augmentation
 Data augmentation is used to artifically create images, these images are added to the original training images to increase the total training set size.  
-We implemented data augmentation with keras [ImageDataGenerator](https://keras.io/api/preprocessing/image/#imagedatagenerator-class) class and tuned its parameters.    By doing so, we were able to raise the test accuracy by ~2.5%.  
+We implemented data augmentation with keras [ImageDataGenerator](https://keras.io/api/preprocessing/image/#imagedatagenerator-class) class and tuned its parameters.    By doing so, we were able to raise the test accuracy by ~7%.  
 The trick was not to overuse it so that the model could still learn from the training images.
 
 #### 2. Batch Normalization and Dropout Layers
