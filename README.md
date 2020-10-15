@@ -109,9 +109,9 @@ On the other hand, the plot on the right shows that the cross-validation accurac
 Our final architecture had a test accuracy of ~84%. The architecture is a combination of these 3 blocks:
 
 <p align="center">
-  <img src=https://user-images.githubusercontent.com/43937873/96025489-7aca0100-0e55-11eb-8b08-ed17fcf30ba7.png alt="drawing" width="280"/>
-  <img src=https://user-images.githubusercontent.com/43937873/96025536-8caba400-0e55-11eb-8f27-29e9182459ac.png alt="drawing" width="280"/>
-  <img src=https://user-images.githubusercontent.com/43937873/96025592-9df4b080-0e55-11eb-917f-19b17820c4e0.png alt="drawing" width="280"/>
+  <img src=https://user-images.githubusercontent.com/43937873/96025489-7aca0100-0e55-11eb-8b08-ed17fcf30ba7.png alt="drawing" width="310"/>
+  <img src=https://user-images.githubusercontent.com/43937873/96025536-8caba400-0e55-11eb-8f27-29e9182459ac.png alt="drawing" width="310"/>
+  <img src=https://user-images.githubusercontent.com/43937873/96025592-9df4b080-0e55-11eb-917f-19b17820c4e0.png alt="drawing" width="310"/>
 </p>
 
 However, depending on only the accuracy and loss of the trained model doesn't always give a full understanding of the model's performance.  
