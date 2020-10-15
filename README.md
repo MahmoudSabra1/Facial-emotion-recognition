@@ -62,7 +62,7 @@ Or by using a live camera
   python live_cam_predict.py
 ```
 Here are some test examples:
-<p align="center">
+<p align="left">
   <img src=https://user-images.githubusercontent.com/40613682/96073810-7c241980-0ea7-11eb-848d-29b56ecf4fc1.png alt="drawing" width="170" height="180"/>
   <img src=https://user-images.githubusercontent.com/40613682/96074052-fc4a7f00-0ea7-11eb-8fca-4baf225ed327.png alt="drawing" width="170" height="180"/> 
   <img src=https://user-images.githubusercontent.com/40613682/96074205-67945100-0ea8-11eb-9e43-5b9124c94275.png alt="drawing" width="170" height="180"/>
