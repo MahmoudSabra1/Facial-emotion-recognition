@@ -47,21 +47,23 @@ git clone https://github.com/MahmoudSabra1/Facial-emotion-recognition
 
 The model can make predictions on saved images by providing the image path using the following command
  ```sh
-  python img_predict.py <image path>
+  python img_predict.py img_name.png
  ```
 It can also predict on saved videos
 ```sh
-  python vid_predict.py <video path>
+  python vid_predict.py vid_name.mp4
 ```
 Or by using a live camera
 ```sh
   python live_cam_predict.py
 ```
 Here are some test examples:
-<p align="left">
-  <img src= alt="drawing" width="310"/>
-  <img src= alt="drawing" width="310"/> 
-  <img src= alt="drawing" width="310"/>
+<p align="center">
+  <img src=https://user-images.githubusercontent.com/40613682/96073810-7c241980-0ea7-11eb-848d-29b56ecf4fc1.png alt="drawing" width="150"/>
+  <img src=https://user-images.githubusercontent.com/40613682/96074052-fc4a7f00-0ea7-11eb-8fca-4baf225ed327.png alt="drawing" width="150"/> 
+  <img src=https://user-images.githubusercontent.com/40613682/96074205-67945100-0ea8-11eb-9e43-5b9124c94275.png alt="drawing" width="150"/>
+  <img src=https://user-images.githubusercontent.com/40613682/96074354-ca85e800-0ea8-11eb-86da-749d3653ddbf.png alt="drawing" width="150"/>
+  <img src=https://user-images.githubusercontent.com/40613682/96076039-b9d77100-0eac-11eb-93e0-26ca0f6e678d.png alt="drawing" width="150"/>
 </p>
 
 <!-- Improving Model Performance -->
