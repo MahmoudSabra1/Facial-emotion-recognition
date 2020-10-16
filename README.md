@@ -127,6 +127,7 @@ Here's how our confusion matrix for the 7 classes looks like, the X-axis is for 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
+- https://www.coursera.org/learn/convolutional-neural-networks
 - https://machinelearningmastery.com/image-augmentation-deep-learning-keras/
 - https://machinelearningmastery.com/improve-deep-learning-performance/
 - https://medium.com/analytics-vidhya/deep-learning/home
